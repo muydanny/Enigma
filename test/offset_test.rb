@@ -20,6 +20,10 @@ class OffsetTest < Minitest::Test
     assert_equal 1025, @offset.last_four_digits
   end
 
-  def test 
-
+  def test_it_can_get_offsets
+    assert_equal 1, @date.a_offset
+    assert_equal 0, @date.b_offset
+    assert_equal 2, @date.c_offset
+    assert_equal 5, @date.d_offset
+  end
 end
