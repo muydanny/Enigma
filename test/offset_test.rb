@@ -5,7 +5,7 @@ require './lib/offset'
 
 class OffsetTest < Minitest::Test
   def setup
-    @offset = Offset.new("040895")
+    @offset = Offset.new("02715","040895")
   end
 
   def test_it_exists
@@ -21,9 +21,7 @@ class OffsetTest < Minitest::Test
   end
 
   def test_it_can_get_offsets
-    assert_equal 1, @date.a_offset
-    assert_equal 0, @date.b_offset
-    assert_equal 2, @date.c_offset
-    assert_equal 5, @date.d_offset
+  expected ={ :A => 3, :B => 27, :C => 73, :D => 20}
+  assert_equal expected, @offset.letter_offsets
   end
 end
