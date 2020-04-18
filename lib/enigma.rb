@@ -1,5 +1,6 @@
 require_relative "./offset"
 require_relative "./decoder"
+require_relative "./encoder"
 
 class Enigma
 
@@ -10,15 +11,15 @@ class Enigma
     offset = Offset.new(key, date)
     encoded = Encoder.new(message, offset.letter_offsets)
     {
-      encryption: decoded.message,
+      encryption: encoded.message,
       key: key,
       date: date
     }
   end
 
-  def decrypt(message, key, date)
+  def decrypt(ciphertext, key, date)
     offset = Offset.new(key, date)
-    decoded = Decoder.new(message, offset)
+    decoded = Decoder.new(ciphertext, offset)
     {
       decryption: decoded.message,
       key: key,
