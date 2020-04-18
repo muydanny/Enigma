@@ -8,17 +8,19 @@ class Encoder
     @letter_offset = letter_offset
   end
 
-# find current index of character
-# find first key in letter offset (A B C D key)
-# add current offset and index
-# take number move forward that many spaces
-# rotate with ! and without
+  def message
+    possible_keys = [:A, :B, :C,:D]
+    @message.split("").map do |character|
+      character_index = character_set.find_index(character)
+      key = possible_keys.first
+      possible_keys.rotate!
+      encrypt_character(character_index + @letter_offset[key])
+    end.join
+  end
 
-  # def message
-  #   @message.split("").map do |character|
-  #     require "pry"; binding.pry
-  #   end
-  # end
+  def encrypt_character(offset)
+    character_set.rotate(offset).first
+  end
 
   def character_set
     ("a".."z").to_a << " "

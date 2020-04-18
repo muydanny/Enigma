@@ -17,4 +17,12 @@ class EncoderTest < Minitest::Test
     expected = "abcdefghijklmnopqrstuvwxyz ".split("")
     assert_equal expected, @encoder.character_set
   end
+
+  def test_it_can_translate_message
+    assert_equal "keder ohulw", @encoder.message
+  end
+
+  def test_it_can_offset_individual_character
+    assert_equal "k", @encoder.encrypt_character(10)
+  end
 end
