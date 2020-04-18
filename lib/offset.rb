@@ -1,7 +1,20 @@
+require_relative "./key"
+
 class Offset
 
-  def initialize(date)
+  def initialize(key, date)
     @date = date
+    @key = Key.new(key)
+  end
+
+  def letter_offsets
+    date_key = last_four_digits
+    {
+      :A => @key.a_key + date_key.digits.reverse[0],
+      :B => @key.b_key + date_key.digits.reverse[1],
+      :C => @key.c_key + date_key.digits.reverse[2],
+      :D => @key.d_key + date_key.digits.reverse[3]
+    }
   end
 
   def squared
@@ -12,11 +25,11 @@ class Offset
     squared.digits.reverse[-4..-1].join.to_i
   end
 
-offset.new = {
-a_offset: 1,
-b_offset: 0,
-c_offset: 2,
-d_offset: 5
-}
+# offset.new = {
+# a_offset: 1,
+# b_offset: 0,
+# c_offset: 2,
+# d_offset: 5
+# }
 
 end
