@@ -14,11 +14,11 @@ class Encoder
 # take number move forward that many spaces
 # rotate with ! and without
 
-  def message
-    @message.split("").map do |character|
-      require "pry"; binding.pry
-    end
-  end
+  # def message
+  #   @message.split("").map do |character|
+  #     require "pry"; binding.pry
+  #   end
+  # end
 
   def character_set
     ("a".."z").to_a << " "

@@ -6,10 +6,15 @@ require './lib/encoder'
 
 class EncoderTest < Minitest::Test
   def setup
-    @encoder = Encoder.new
+    @encoder = Encoder.new("hello world", { :A => 3, :B => 27, :C => 73, :D => 20})
   end
 
   def test_it_exists
     assert_instance_of Encoder, @encoder
+  end
+
+  def test_it_has_a_character_set
+    expected = "abcdefghijklmnopqrstuvwxyz ".split("")
+    assert_equal expected, @encoder.character_set
   end
 end
