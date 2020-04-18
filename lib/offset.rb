@@ -9,7 +9,6 @@ class Offset
   end
 
   def last_four_digits
-    require "pry"; binding.pry
-    squared.digits.reverse[-1..-4]
+    squared.digits.reverse[-4..-1].join.to_i
   end
 end
