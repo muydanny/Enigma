@@ -17,7 +17,7 @@ class Enigma
     }
   end
 
-  def decrypt(ciphertext, key, date = Time.now.strftime("%d%m%y"))
+  def decrypt(ciphertext, key, date = Time.now.strftime("%d%m%y") )
     offset = Offset.new(key, date)
     decode = Decoder.new(ciphertext, offset.letter_offsets)
     {
