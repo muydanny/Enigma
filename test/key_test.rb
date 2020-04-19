@@ -12,7 +12,6 @@ class KeyTest < Minitest::Test
   end
 
   def test_it_has_keys
-    @key = Key.new("02715")
     assert_equal 02, @key.a_key
     assert_equal 27, @key.b_key
     assert_equal 71, @key.c_key
