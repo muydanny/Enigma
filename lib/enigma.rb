@@ -9,9 +9,9 @@ class Enigma
 
   def encrypt(message, key, date)
     offset = Offset.new(key, date)
-    encoded = Encoder.new(message, offset.letter_offsets)
+    encode = Encoder.new(message, offset.letter_offsets)
     {
-      encryption: encoded.message,
+      encryption: encode.encode_message,
       key: key,
       date: date
     }
@@ -19,9 +19,9 @@ class Enigma
 
   def decrypt(ciphertext, key, date)
     offset = Offset.new(key, date)
-    decoded = Decoder.new(ciphertext, offset)
+    decode = Decoder.new(ciphertext, offset.letter_offsets)
     {
-      decryption: decoded.message,
+      decryption: decode.decode_message,
       key: key,
       date: date
     }

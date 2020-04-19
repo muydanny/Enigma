@@ -3,12 +3,15 @@ require_relative "./offset"
 
 class Encoder
 
+  attr_reader :message,
+              :letter_offset
+
   def initialize(message, letter_offset)
     @message = message
     @letter_offset = letter_offset
   end
 
-  def message
+  def encode_message
     possible_keys = [:A, :B, :C,:D]
     @message.split("").map do |character|
       character_index = character_set.find_index(character)
