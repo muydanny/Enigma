@@ -11,7 +11,7 @@ class Enigma
     offset = Offset.new(key, date)
     encoded = Encoder.new(message, offset.letter_offsets)
     {
-      encryption: encoded.message,
+      encryption: encode.message,
       key: key,
       date: date
     }
@@ -21,7 +21,7 @@ class Enigma
     offset = Offset.new(key, date)
     decoded = Decoder.new(ciphertext, offset)
     {
-      decryption: decoded.message,
+      decryption: decode.message,
       key: key,
       date: date
     }
