@@ -7,7 +7,7 @@ class Enigma
   def initialize
   end
 
-  def encrypt(message, key, date = Time.now.strftime("%d%m%y"))
+  def encrypt(message, key, date)
     offset = Offset.new(key, date)
     encode = Encoder.new(message, offset.letter_offsets)
     {
@@ -17,7 +17,7 @@ class Enigma
     }
   end
 
-  def decrypt(ciphertext, key, date = Time.now.strftime("%d%m%y") )
+  def decrypt(ciphertext, key, date)
     offset = Offset.new(key, date)
     decode = Decoder.new(ciphertext, offset.letter_offsets)
     {
