@@ -12,6 +12,11 @@ class EnigmaTest < Minitest::Test
     assert_instance_of Enigma, @enigma
   end
 
+  def test_it_can_encrypt
+    expected = {encryption: "keder ohulw", key: "02715", date: "040895"}
+    assert_equal expected , @enigma.encrypt("hello world", "02715", "040895")
+  end
+
   def test_it_can_encrypt_without_date
     Timecop.freeze(Time.local(2020,4,19))
     todays_date = Time.now.strftime("%d%m%y")
@@ -21,11 +26,11 @@ class EnigmaTest < Minitest::Test
     assert_equal expected , @enigma.encrypt(original_message, "02715")
   end
 
-  def test_it_can_encrypt
-    expected = {encryption: "keder ohulw", key: "02715", date: "040895"}
-    assert_equal expected , @enigma.encrypt("hello world", "02715", "040895")
+  def test_it_can_decrypt
+    expected = {decryption: "hello world", key: "02715", date: "040895"}
+    assert_equal expected, @enigma.decrypt("keder ohulw", "02715", "040895")
   end
-
+  
   def test_it_can_decrypt_without_date
     todays_date = Time.now.strftime("%d%m%y")
     original_message = "hello world"
@@ -34,8 +39,4 @@ class EnigmaTest < Minitest::Test
     assert_equal expected , @enigma.decrypt(encrypted[:encryption], "02715")
   end
 
-  def test_it_can_decrypt
-    expected = {decryption: "hello world", key: "02715", date: "040895"}
-    assert_equal expected, @enigma.decrypt("keder ohulw", "02715", "040895")
-  end
 end
