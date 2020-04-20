@@ -1,10 +1,11 @@
 class Key
 
-  attr_reader :key
+  attr_reader :key,
+              :key_offset
 
   def initialize(key = random_numbers)
     @key = key
-    @keys = {
+    @key_offset = {
       :A => key[0..1].to_i,
       :B => key[1..2].to_i,
       :C => key[2..3].to_i,
