@@ -12,10 +12,15 @@ class KeyTest < Minitest::Test
   end
 
   def test_it_has_keys
-    @key = Key.new("02715")
-    assert_equal 02, @key.a_key
-    assert_equal 27, @key.b_key
-    assert_equal 71, @key.c_key
-    assert_equal 15, @key.d_key
+    assert_equal 02, @key.key_offset[:A]
+    assert_equal 27, @key.key_offset[:B]
+    assert_equal 71, @key.key_offset[:C]
+    assert_equal 15, @key.key_offset[:D]
+  end
+
+  def test_it_can_generate_random_key
+    key = Key.new.key
+    assert key.to_i > 0
+    assert_equal 5, key.length
   end
 end

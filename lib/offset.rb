@@ -10,10 +10,10 @@ class Offset
   def letter_offsets
     date_key = last_four_digits
     {
-      :A => @key.a_key + date_key.digits.reverse[0],
-      :B => @key.b_key + date_key.digits.reverse[1],
-      :C => @key.c_key + date_key.digits.reverse[2],
-      :D => @key.d_key + date_key.digits.reverse[3]
+      :A => @key.key_offset[:A] + date_key.digits.reverse[0],
+      :B => @key.key_offset[:B] + date_key.digits.reverse[1],
+      :C => @key.key_offset[:C] + date_key.digits.reverse[2],
+      :D => @key.key_offset[:D] + date_key.digits.reverse[3]
     }
   end
 
