@@ -1,5 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
+require 'timecop'
 require './lib/enigma'
 
 class EnigmaTest < Minitest::Test
@@ -14,10 +15,10 @@ class EnigmaTest < Minitest::Test
   def test_it_can_encrypt_without_date
     Timecop.freeze(Time.local(2020,4,19))
     todays_date = Time.now.strftime("%d%m%y")
+    encrypted_message = "pib wdmczpu"
     original_message = "hello world"
-    decrypted = @enigma.decrypt(original_message, "02715")
-    expected = {encryption: original_message, key: "02715", date: todays_date}
-    assert_equal expected , @enigma.encrypt(decrypted[:decryption], "02715")
+    expected = {encryption: encrypted_message, key: "02715", date: todays_date}
+    assert_equal expected , @enigma.encrypt(original_message, "02715")
   end
 
   def test_it_can_encrypt
