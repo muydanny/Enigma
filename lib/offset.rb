@@ -25,11 +25,4 @@ class Offset
     squared.digits.reverse[-4..-1].join.to_i
   end
 
-# offset.new = {
-# a_offset: 1,
-# b_offset: 0,
-# c_offset: 2,
-# d_offset: 5
-# }
-
 end
