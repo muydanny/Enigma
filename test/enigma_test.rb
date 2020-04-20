@@ -12,9 +12,12 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_it_can_encrypt_without_date
+    Timecop.freeze(Time.local(2020,4,19))
     todays_date = Time.now.strftime("%d%m%y")
-    expected = {encryption: "pib wdmczpu", key: "02715", date: todays_date}
-    assert_equal expected , @enigma.encrypt("hello world", "02715")
+    original_message = "hello world"
+    decrypted = @enigma.decrypt(original_message, "02715")
+    expected = {encryption: original_message, key: "02715", date: todays_date}
+    assert_equal expected , @enigma.encrypt(decrypted[:decryption], "02715")
   end
 
   def test_it_can_encrypt
