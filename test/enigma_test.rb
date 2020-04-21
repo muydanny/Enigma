@@ -1,3 +1,4 @@
+require_relative './test_helper'
 require 'minitest/autorun'
 require 'minitest/pride'
 require 'timecop'
@@ -30,7 +31,7 @@ class EnigmaTest < Minitest::Test
     expected = {decryption: "hello world", key: "02715", date: "040895"}
     assert_equal expected, @enigma.decrypt("keder ohulw", "02715", "040895")
   end
-  
+
   def test_it_can_decrypt_without_date
     todays_date = Time.now.strftime("%d%m%y")
     original_message = "hello world"
